@@ -1,0 +1,2 @@
+[vagrant-host]
+target1 ansible_ssh_pass=vagrant
