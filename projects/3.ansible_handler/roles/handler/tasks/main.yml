@@ -1,15 +1,18 @@
 ---
 
-- name: update apt cache and insttall nginx
+- name: update apt cache and install nginx
+  become: yes
   apt:
     name: nginx
     state: latest
     update_cache: yes
 
 - name: index.html copy
+  become: yes
   template: src=index.html dest=/usr/share/nginx/html/index.html
 
 - name: updated.html copy
+  become: yes
   template: src=updated.html dest=/usr/share/nginx/html/index.html
   notify:
     - Restart nginx
