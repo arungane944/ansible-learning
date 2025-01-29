@@ -1,7 +1,7 @@
 ---
-- name: install nginx
+- name: install golang package
   yum:
-    name: nginx
+    name: golang
     state: present
-    update_cache: yes
-  tags: nginx
+  become: yes
+  tags: golang
