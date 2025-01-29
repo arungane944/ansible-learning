@@ -1,7 +1,0 @@
----
-- name: install golang package
-  yum:
-    name: golang
-    state: present
-  become: yes
-  tags: golang

@@ -1,6 +1,6 @@
 ---
 - name: Example Ansible Playbook
   hosts: all
-  remote_user: target1
+  remote_user: ubuntu
   roles:
-    - nginx
+    - python
