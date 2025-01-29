@@ -1,0 +1,9 @@
+---
+- name: Install nginx on Target VM
+  hosts: target
+  become: true  # Run as root
+  tasks:
+    - name: Ensure nginx is installed
+      yum:
+        name: nginx
+        state: present
