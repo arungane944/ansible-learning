@@ -108,7 +108,7 @@ class Hypervisor
   # Run a shell script from distro specific directort
   def provision_script(*args, script:)
     s = ""
-    if File.exists?(File.join(@@workdir, "linux", script))
+    if File.exist?(File.join(@@workdir, "linux", script))
       s = File.join(@@workdir, "linux", script)
     else
       raise Exception.new "Provisioner script not found: #{script}"

@@ -52,6 +52,7 @@ module Powershell
   end
 end
 
+
 # Prints text with box delimiters left and right
 def b_puts(str, width = 71)
   padding = width - 4 - str.length
@@ -62,30 +63,31 @@ def b_puts(str, width = 71)
   puts "│ #{str}#{pad} │"
 end
 
-def show_system_info(trigger, host)
-  begin #
-    puts "┌─────────────────────────────────────────────────────────────────────┐"
-    #b_puts("")
-    b_puts("If raising a question on our forums, please include the contents")
-    b_puts("of this box with your question. It will help us to identify issues")
-    b_puts("with your system.")
-    b_puts("")
-    b_puts("Detecting your hardware...")
-    b_puts("- System: #{host.os_name()}")
-    b_puts("- CPU:    #{host.cpu_name()} (#{host.cpu_count()} cores)")
-    b_puts("- RAM:    #{host.physical_ram_gb()} GB")
-    if !host.hypervisor_exists?
-      raise DetectionError.new "FATAL - Missing #{host.hypervisor_name()}. Please install it first."
-    end
-  rescue DetectionError => e
-    b_puts("#{e}")
-    trigger.abort = true
-    raise
-  ensure
-    #b_puts("")
-    puts "└─────────────────────────────────────────────────────────────────────┘"
-  end
-end
+
+# def show_system_info(trigger, host)
+#   begin #
+#     puts "┌─────────────────────────────────────────────────────────────────────┐"
+#     #b_puts("")
+#     b_puts("If raising a question on our forums, please include the contents")
+#     b_puts("of this box with your question. It will help us to identify issues")
+#     b_puts("with your system.")
+#     b_puts("")
+#     b_puts("Detecting your hardware...")
+#     b_puts("- System: #{host.os_name()}")
+#     b_puts("- CPU:    #{host.cpu_name()} (#{host.cpu_count()} cores)")
+#     b_puts("- RAM:    #{host.physical_ram_gb()} GB")
+#     if !host.hypervisor_exists?
+#       raise DetectionError.new "FATAL - Missing #{host.hypervisor_name()}. Please install it first."
+#     end
+#   rescue DetectionError => e
+#     b_puts("#{e}")
+#     trigger.abort = true
+#     raise
+#   ensure
+#     #b_puts("")
+#     puts "└─────────────────────────────────────────────────────────────────────┘"
+#   end
+# end
 
 def validate_configuration(trigger, host, vms)
   requested_ram = 0

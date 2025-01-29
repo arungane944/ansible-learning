@@ -58,7 +58,7 @@ Vagrant.configure("2") do |config|
     trigger.ruby do |env, machine|
       if !config_shown
         host = Host.get()
-        show_system_info(trigger, host)
+        #show_system_info(trigger, host)
         validate_configuration(trigger, host, VIRTUAL_MACHINES)
         config_shown = true
       end
